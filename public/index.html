@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechNews Aggregator</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1 class="logo">TechNews</h1>
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <!-- Dynamically populated -->
+        </ul>
+      </nav>
+      <div class="mobile-menu" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="category-header">
+      <h2 id="categoryTitle">Latest Technology News</h2>
+      <div class="filter-options">
+        <label for="sourceFilter">Filter by source:</label>
+        <select id="sourceFilter">
+          <option value="all">All Sources</option>
+          <!-- Dynamically populated -->
+        </select>
+      </div>
+    </div>
+
+    <div class="news-grid" id="newsContainer">
+      <!-- News articles will be loaded here -->
+    </div>
+
+    <div class="loading" id="loadingIndicator">
+      <div class="spinner"></div>
+      <p>Loading news...</p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2023 TechNews Aggregator. All rights reserved.</p>
+      <p>Powered by NewsAPI and other news sources.</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
