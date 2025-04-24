@@ -230,3 +230,41 @@
       gap: 1rem;
     }
   }
+
+  /* Dark Mode Styles */
+  body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+  }
+
+  body.dark-mode header {
+    background-color: #1f1f1f;
+    color: #e0e0e0;
+  }
+
+  body.dark-mode .nav-links a {
+    color: #e0e0e0;
+  }
+
+  body.dark-mode .nav-links a:hover {
+    color: var(--secondary-color);
+  }
+
+  body.dark-mode .news-card {
+    background-color: #1e1e1e;
+    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.1);
+  }
+
+  body.dark-mode .news-title {
+    color: #ffffff;
+  }
+
+  body.dark-mode .news-description,
+  body.dark-mode .news-meta {
+    color: #bbbbbb;
+  }
+
+  body.dark-mode footer {
+    background-color: #1f1f1f;
+    color: #bbbbbb;
+  }

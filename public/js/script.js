@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const sourceFilter = document.getElementById('sourceFilter');
     const loadingIndicator = document.getElementById('loadingIndicator');
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const darkModeToggle = document.getElementById('darkModeToggle');
   
     // Current category
     let currentCategory = 'general';
@@ -18,6 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
       loadCategories();
       loadNews(currentCategory);
       setupEventListeners();
+      applyDarkModeFromStorage();
     }
   
     // Fetch and display categories
@@ -157,5 +159,23 @@ document.addEventListener('DOMContentLoaded', function() {
           navLinksContainer.classList.remove('active');
         }
       });
+
+      // Dark mode toggle
+      darkModeToggle.addEventListener('click', function() {
+        document.body.classList.toggle('dark-mode');
+        if (document.body.classList.contains('dark-mode')) {
+          localStorage.setItem('darkMode', 'enabled');
+        } else {
+          localStorage.setItem('darkMode', 'disabled');
+        }
+      });
+    }
+
+    // Apply dark mode from localStorage on page load
+    function applyDarkModeFromStorage() {
+      const darkModeSetting = localStorage.getItem('darkMode');
+      if (darkModeSetting === 'enabled') {
+        document.body.classList.add('dark-mode');
+      }
     }
   });
