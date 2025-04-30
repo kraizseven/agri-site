@@ -29,11 +29,8 @@
     <div class="category-header">
       <h2 id="categoryTitle">Latest Technology News</h2>
       <div class="filter-options">
-        <label for="sourceFilter">Filter by source:</label>
-        <select id="sourceFilter">
-          <option value="all">All Sources</option>
-          <!-- Dynamically populated -->
-        </select>
+        <label for="topicSearch">Search topics:</label>
+        <input type="text" id="topicSearch" placeholder="Search articles...">
       </div>
     </div>
 
@@ -46,6 +43,15 @@
       <p>Loading news...</p>
     </div>
   </main>
+
+  <!-- Signup/Login Modal -->
+  <div id="signupModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button" id="closeModal">&times;</span>
+      <p>Enjoying the articles so far? Sign up for real time updates.</p>
+      <button id="signupButton" class="modal-button">Sign Up</button>
+    </div>
+  </div>
 
   <footer>
     <div class="container">
