@@ -180,8 +180,8 @@ app.get('/api/search', async (req, res) => {
 
     if (!articles || articles.length === 0) {
       // If no results, try NYT API
-      const gnewsURL = `https://gnews.io/api/v4/search?=${encodeURIComponent(query)}&lang=en&api-key=${GNEWS_API_KEY}`;
-      response = await axios.get(gnewsURL);
+      const gnewsURLcl = `https://gnews.io/api/v4/search?=${encodeURIComponent(query)}&lang=en&api-key=${GNEWS_API_KEY}`;
+      response = await axios.get(gnewsURLcl);
       const docs = response.data.response.docs;
       if (!docs || docs.length === 0) {
         return res.json({ articles: [], message: 'No results found' });
