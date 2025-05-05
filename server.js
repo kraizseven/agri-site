@@ -99,7 +99,7 @@ const NYT_API_KEY = process.env.NYT_API_KEY || 'your_nytapi_key';
 // Serve static files
 app.use(express.static(path.join(__dirname, 'public')));
 
-// News API endpoints
+// News API end-points
 const newsSources = {
   general: {
     name: 'General Technology',

@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', function() {
     // DOM Elements
     const navLinksContainer = document.getElementById('navLinks');
@@ -15,7 +14,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Current category
     let currentCategory = 'general';
     let currentArticles = [];
-    let filteredArticles = [];
   
     // Initialize the app
     init();
@@ -71,10 +69,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const data = await response.json();
         
         currentArticles = data.articles;
-        filteredArticles = currentArticles;
         categoryTitle.textContent = data.category;
         
-        renderArticles(filteredArticles);
+        renderArticles(currentArticles);
         
         // Update active nav link
         document.querySelectorAll('.nav-link').forEach(link => {
@@ -141,18 +138,38 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       });
       
-      // Topic search input
-      topicSearch.addEventListener('input', function() {
-        const searchTerm = this.value.toLowerCase();
+      // Topic search input - call backend search API
+      topicSearch.addEventListener('input', async function() {
+        const searchTerm = this.value.trim();
         if (searchTerm === '') {
-          filteredArticles = currentArticles;
-        } else {
-          filteredArticles = currentArticles.filter(article => {
-            return article.title.toLowerCase().includes(searchTerm) ||
-                   (article.description && article.description.toLowerCase().includes(searchTerm));
-          });
+          // If empty, reload current category articles
+          loadNews(currentCategory);
+          return;
         }
-        renderArticles(filteredArticles);
+        loadingIndicator.style.display = 'flex';
+        newsContainer.innerHTML = '';
+        try {
+          const response = await fetch(`/api/search?q=${encodeURIComponent(searchTerm)}`);
+          const data = await response.json();
+          if (data.articles && data.articles.length > 0) {
+            renderArticles(data.articles);
+          } else {
+            newsContainer.innerHTML = `
+              <div class="no-articles">
+                <p>No results found.</p>
+              </div>
+            `;
+          }
+        } catch (error) {
+          console.error('Error searching news:', error);
+          newsContainer.innerHTML = `
+            <div class="error-message">
+              <p>Failed to search news. Please try again later.</p>
+            </div>
+          `;
+        } finally {
+          loadingIndicator.style.display = 'none';
+        }
       });
       
       // Mobile menu toggle
@@ -222,3 +239,4 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
   });
+
