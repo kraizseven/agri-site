@@ -45,12 +45,11 @@ document.addEventListener('DOMContentLoaded', function() {
         loginListItem.innerHTML = '<a href="#" class="nav-link" id="loginButton">Login</a>';
         navLinksContainer.prepend(loginListItem);
         
-        // Add event listener for login button (optional: can be extended)
+        // Add event listener for login button to redirect to login form page
         const loginButton = document.getElementById('loginButton');
         loginButton.addEventListener('click', function(e) {
           e.preventDefault();
-          // For now, just show the signup modal on login click
-          showSignupModal();
+          window.location.href = '/login.html';
         });
         
       } catch (error) {
@@ -224,9 +223,9 @@ document.addEventListener('DOMContentLoaded', function() {
       signupModal.style.display = 'none';
     }
 
-    // Setup timer to show signup popup after 3 minutes (180000 ms)
+    // Setup timer to show signup popup every 3 minutes (180000 ms)
     function setupSignupPopupTimer() {
-      setTimeout(() => {
+      setInterval(() => {
         showSignupModal();
       }, 180000);
     }
