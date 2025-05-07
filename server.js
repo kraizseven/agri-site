@@ -79,6 +79,31 @@ app.get('/api/categories', (req, res) => {
   res.json(categories);
 });
 
+// Simple hardcoded user database for demonstration
+const users = [
+  {
+    email: 'user@example.com',
+    password: 'password123' // In real apps, passwords must be hashed and stored securely
+  }
+];
+
+// Login API endpoint
+app.post('/api/login', (req, res) => {
+  const { email, password } = req.body;
+  if (!email || !password) {
+    return res.status(400).json({ error: 'Email and password are required' });
+  }
+
+  const user = users.find(u => u.email === email && u.password === password);
+  if (user) {
+    // Login successful
+    return res.json({ message: 'Login successful' });
+  } else {
+    // Login failed
+    return res.status(401).json({ error: 'Invalid email or password' });
+  }
+});
+
   
 // Simple hardcoded user database for demonstration
 const users = [
@@ -235,6 +260,31 @@ app.get('/api/search', async (req, res) => {
   } catch (error) {
     console.error('Error searching news:', error);
     res.status(500).json({ error: 'Failed to search news' });
+  }
+});
+
+// Simple hardcoded user database for demonstration
+const users = [
+  {
+    email: 'user@example.com',
+    password: 'password123' // In real apps, passwords must be hashed and stored securely
+  }
+];
+
+// Login API endpoint
+app.post('/api/login', (req, res) => {
+  const { email, password } = req.body;
+  if (!email || !password) {
+    return res.status(400).json({ error: 'Email and password are required' });
+  }
+
+  const user = users.find(u => u.email === email && u.password === password);
+  if (user) {
+    // Login successful
+    return res.json({ message: 'Login successful' });
+  } else {
+    // Login failed
+    return res.status(401).json({ error: 'Invalid email or password' });
   }
 });
 
