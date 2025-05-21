@@ -3,4 +3,6 @@
 package.json
 package-lock.json
 *.env
-*.json
+*file*.json
+
+#rapid API- research
