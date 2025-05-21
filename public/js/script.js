@@ -198,11 +198,12 @@ document.addEventListener('DOMContentLoaded', function() {
         hideSignupModal();
       });
 
-      // Signup button in modal
-      signupButton.addEventListener('click', function() {
+      signupButton.addEventListener('click', function(e) {
         // For now, just hide modal on signup click
         hideSignupModal();
-        alert('Thank you for signing up!');
+        //const signup = document.getElementById('signupButton');
+        e.preventDefault();
+        window.location.href ='/login.html';
       });
 
       // Close modal when clicking outside modal content
@@ -223,11 +224,11 @@ document.addEventListener('DOMContentLoaded', function() {
       signupModal.style.display = 'none';
     }
 
-    // Setup timer to show signup popup every 3 minutes (180000 ms)
+    // Setup timer to show signup popup every half minute
     function setupSignupPopupTimer() {
       setInterval(() => {
         showSignupModal();
-      }, 180000);
+      }, 60000);
     }
 
     // Apply dark mode from localStorage on page load

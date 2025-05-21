@@ -8,12 +8,13 @@
     body {
       font-family: Arial, sans-serif;
       padding: 2rem;
-      background-color: #f4f4f4;
+      background-color: #c1e4dc;
+      
     }
     .login-container {
       max-width: 400px;
       margin: 0 auto;
-      background: white;
+      background: rgb(231, 207, 241);
       padding: 2rem;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
@@ -26,12 +27,12 @@
       display: block;
       margin-top: 1rem;
     }
-    input[type="email"],
-    input[type="password"] {
+    /*input[type="password"]*/
+    input[type="email"]{
       width: 100%;
       padding: 0.5rem;
       margin-top: 0.25rem;
-      border: 1px solid #ccc;
+      border: 1px solid #d8beee;
       border-radius: 4px;
     }
     button {
@@ -46,7 +47,7 @@
       cursor: pointer;
     }
     button:hover {
-      background-color: #0056b3;
+      background-color: #9a35d4;
     }
     .error-message {
       color: red;
@@ -65,10 +66,10 @@
     <h2>Login</h2>
     <form id="loginForm">
       <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required />
+      <input type="email" placeholder="john@yahoo.com" id="email" name="email" required />
       
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" required />
+      <!--label for="password">Password:</label>
+      <input type="password" id="password" name="password" required /-->
       
       <button type="submit">Login</button>
     </form>
@@ -85,7 +86,7 @@
       messageDiv.className = '';
 
       const email = loginForm.email.value.trim();
-      const password = loginForm.password.value;
+      //const password = loginForm.password.value;
 
       try {
         const response = await fetch('/api/login', {
@@ -93,7 +94,7 @@
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ email, password })
+          body: JSON.stringify({ email /*password*/ })
         });
 
         const data = await response.json();

@@ -155,6 +155,13 @@
     font-weight: 500;
   }
   
+  input[type="text"]{
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.25rem;
+    border: 1px solid #e7cbff;
+    border-radius: 4px;
+  }
   .read-more:hover {
     text-decoration: underline;
   }
