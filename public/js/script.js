@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const loginButton = document.getElementById('loginButton');
         loginButton.addEventListener('click', function(e) {
           e.preventDefault();
-          window.location.href = '/login.html';
+          window.location.href = url('');
         });
         
       } catch (error) {

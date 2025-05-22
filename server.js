@@ -148,7 +148,7 @@ const PORT = process.env.PORT || 3000;
 
 // API Keys called from environment variable
 const NEWS_API_KEY = process.env.NEWS_API_KEY || 'your_newsapi_key';
-const NYT_API_KEY = process.env.NYT_API_KEY || '';
+const NYT_API_KEY = process.env.NYT_API_KEY || '9';
 
 // Serve static files
 app.use(express.static(path.join(__dirname, 'public')));
