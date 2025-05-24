@@ -2,119 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Login</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 2rem;
-      background-color: #c1e4dc;
-      
-    }
-    .login-container {
-      max-width: 400px;
-      margin: 0 auto;
-      background: rgb(231, 207, 241);
-      padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    h2 {
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-    label {
-      display: block;
-      margin-top: 1rem;
-    }
-    /*input[type="password"]*/
-    input[type="email"]{
-      width: 100%;
-      padding: 0.5rem;
-      margin-top: 0.25rem;
-      border: 1px solid #d8beee;
-      border-radius: 4px;
-    }
-    button {
-      margin-top: 1.5rem;
-      width: 100%;
-      padding: 0.75rem;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      font-size: 1rem;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #9a35d4;
-    }
-    .error-message {
-      color: red;
-      margin-top: 1rem;
-      text-align: center;
-    }
-    .success-message {
-      color: green;
-      margin-top: 1rem;
-      text-align: center;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Supabase Email Authentication</title>
 </head>
 <body>
-  <div class="login-container">
-    <h2>Login</h2>
-    <form id="loginForm">
-      <label for="email">Email:</label>
-      <input type="email" placeholder="john@yahoo.com" id="email" name="email" required />
-      
-      <!--label for="password">Password:</label>
-      <input type="password" id="password" name="password" required /-->
-      
-      <button type="submit">Login</button>
-    </form>
-    <div id="message"></div>
+  <h1>Supabase Email Authentication</h1>
+  <div id="auth-container">
+    <input type="email" id="email" placeholder="Enter your email" />
+    <button id="sign-up">Sign Up</button>
+    <button id="sign-in">Sign In</button>
+    <button id="sign-out" style="display:none;">Sign Out</button>
+    <button id="btn" style="text-align: center;" type="submit">something</button>
   </div>
+  <div id="message"></div>
 
-  <script>
-    const loginForm = document.getElementById('loginForm');
-    const messageDiv = document.getElementById('message');
-
-    loginForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      messageDiv.textContent = '';
-      messageDiv.className = '';
-
-      const email = loginForm.email.value.trim();
-      //const password = loginForm.password.value;
-
-      try {
-        const response = await fetch('/api/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ email /*password*/ })
-        });
-
-        const data = await response.json();
-
-        if (response.ok) {
-          messageDiv.textContent = 'Login successful! Redirecting...';
-          messageDiv.className = 'success-message';
-          // Redirect to home page or dashboard after short delay
-          setTimeout(() => {
-            window.location.href = '/';
-          }, 1500);
-        } else {
-          messageDiv.textContent = data.error || 'Login failed';
-          messageDiv.className = 'error-message';
-        }
-      } catch (error) {
-        messageDiv.textContent = 'An error occurred. Please try again.';
-        messageDiv.className = 'error-message';
-      }
-    });
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/supabase.min.js"></script>
+  <script src="js/auth.js"></script>
 </body>
 </html>

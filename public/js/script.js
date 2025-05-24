@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const loginButton = document.getElementById('loginButton');
         loginButton.addEventListener('click', function(e) {
           e.preventDefault();
-          window.location.href = url('');
+          window.location.href = '../login.html';
         });
         
       } catch (error) {
@@ -203,7 +203,7 @@ document.addEventListener('DOMContentLoaded', function() {
         hideSignupModal();
         //const signup = document.getElementById('signupButton');
         e.preventDefault();
-        window.location.href ='/login.html';
+        window.location.href = '../login.html';
       });
 
       // Close modal when clicking outside modal content
