@@ -1,5 +1,5 @@
 #dependencies
-webpack.config.js
+
 /node_modules
 server.txt
 #*.env
