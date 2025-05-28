@@ -1,9 +1,7 @@
 #dependencies
-
+webpack.config.js
 /node_modules
 server.txt
-package.json
-package-lock.json
 #*.env
 *file*.json
 

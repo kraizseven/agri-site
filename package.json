@@ -1,0 +1,28 @@
+{
+  "name": "javasite",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "build": "webpack --config webpack.config.js",
+    "build:dev": "webpack --config webpack.dev.js --watch",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.8",
+    "axios": "^1.8.4",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  },
+  "description": "",
+  "devDependencies": {
+    "@babel/core": "^7.27.3",
+    "@babel/preset-env": "^7.27.2",
+    "babel-loader": "^10.0.0",
+    "webpack": "^5.99.9",
+    "webpack-cli": "^6.0.1"
+  }
+}
