@@ -4,7 +4,7 @@
 server.txt
 package.json
 package-lock.json
-*.env
+#*.env
 *file*.json
 
 #rapid API- research
