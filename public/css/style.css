@@ -85,7 +85,49 @@
     align-items: center;
     flex-wrap: wrap;
   }
-  
+  /* Mobile First Approach */
+/* Base styles for mobile (320px and up) */
+.container {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* Tablet styles (768px and up) */
+@media screen and (min-width: 768px) {
+    .container {
+        max-width: 750px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+}
+
+/* Desktop styles (1024px and up) */
+@media screen and (min-width: 1024px) {
+    .container {
+        max-width: 1200px;
+        padding: 30px;
+    }
+}
+
+/* Large desktop styles (1200px and up) */
+@media screen and (min-width: 1200px) {
+    .container {
+        max-width: 1400px;
+    }
+}
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* For background images */
+.hero-section {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
   .filter-options {
     display: flex;
     align-items: center;
