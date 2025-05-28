@@ -1,0 +1,1 @@
+console.log("Application starting..."),document.addEventListener("DOMContentLoaded",(function(){console.log("DOM loaded");var e=document.getElementById("app");e&&(e.innerHTML="<h1>JavaSite Application</h1><p>Successfully loaded!</p>")}));
