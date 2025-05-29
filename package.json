@@ -1,5 +1,5 @@
 {
-  "name": "javasite",
+  "name": "article_site",
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
@@ -16,7 +16,8 @@
     "@supabase/supabase-js": "^2.49.8",
     "axios": "^1.8.4",
     "dotenv": "^16.4.7",
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "vercel": "^42.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.27.3",
