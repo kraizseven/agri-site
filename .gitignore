@@ -2,7 +2,7 @@
 
 /node_modules
 server.txt
-#*.env
+.env
 *file*.json
 
 #rapid API- research
