@@ -5,10 +5,15 @@ require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+// API keys
+const NEWS_API_KEY = process.env.NEWS_API_KEY;
+const GNEWS_API_KEY = process.env.GNEWS_API_KEY;
 
-// API Keys called from environment variable
-const NEWS_API_KEY = process.env.NEWS_API_KEY || 'your_newsapi_key';
-const NYT_API_KEY = process.env.NYT_API_KEY || '9';
+// Add validation
+if (!NEWS_API_KEY || !GNEWS_API_KEY) {
+  console.error('Missing required API keys');
+  process.exit(1);
+}
 
 // Serve static files
 app.use(express.static(path.join(__dirname, 'public')));
@@ -50,13 +55,19 @@ app.get('/api/news/:category', async (req, res) => {
   }
 
   try {
+    console.log(`Fetching news for category: ${category}`);
     const response = await axios.get(newsSources[category].endpoint);
+    
+    if (!response.data || !response.data.articles) {
+      return res.status(500).json({ error: 'Invalid API response' });
+    }
+    
     const articles = response.data.articles.map(article => ({
       title: article.title,
       description: article.description,
       url: article.url,
       image: article.urlToImage,
-      source: article.source.name,
+      source: article.source?.name || 'Unknown',
       publishedAt: new Date(article.publishedAt).toLocaleDateString()
     }));
     
@@ -65,8 +76,11 @@ app.get('/api/news/:category', async (req, res) => {
       articles
     });
   } catch (error) {
-    console.error('Error fetching news:', error);
-    res.status(500).json({ error: 'Failed to fetch news' });
+    console.error('Error fetching news:', error.response?.data || error.message);
+    res.status(500).json({ 
+      error: 'Failed to fetch news',
+      details: error.response?.data?.message || error.message
+    });
   }
 });
 
