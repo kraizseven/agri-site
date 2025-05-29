@@ -7,9 +7,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const loadingIndicator = document.getElementById('loadingIndicator');
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const darkModeToggle = document.getElementById('darkModeToggle');
-    const signupModal = document.getElementById('signupModal');
-    const closeModalBtn = document.getElementById('closeModal');
-    const signupButton = document.getElementById('signupButton');
   
     // Current category
     let currentCategory = 'general';
@@ -23,7 +20,6 @@ document.addEventListener('DOMContentLoaded', function() {
       loadNews(currentCategory);
       setupEventListeners();
       applyDarkModeFromStorage();
-      setupSignupPopupTimer();
     }
   
     // Fetch and display categories
@@ -39,18 +35,6 @@ document.addEventListener('DOMContentLoaded', function() {
                data-category="${category.id}">${category.name}</a>
           </li>
         `).join('');
-        
-        // Prepend login button at the top left corner
-        const loginListItem = document.createElement('li');
-        loginListItem.innerHTML = '<a href="#" class="nav-link" id="loginButton">Login</a>';
-        navLinksContainer.prepend(loginListItem);
-        
-        // Add event listener for login button to redirect to login form page
-        const loginButton = document.getElementById('loginButton');
-        loginButton.addEventListener('click', function(e) {
-          e.preventDefault();
-          window.location.href = '../login.html';
-        });
         
       } catch (error) {
         console.error('Error loading categories:', error);
@@ -192,43 +176,6 @@ document.addEventListener('DOMContentLoaded', function() {
           localStorage.setItem('darkMode', 'disabled');
         }
       });
-
-      // Modal close button
-      closeModalBtn.addEventListener('click', function() {
-        hideSignupModal();
-      });
-
-      signupButton.addEventListener('click', function(e) {
-        // For now, just hide modal on signup click
-        hideSignupModal();
-        //const signup = document.getElementById('signupButton');
-        e.preventDefault();
-        window.location.href = '../login.html';
-      });
-
-      // Close modal when clicking outside modal content
-      window.addEventListener('click', function(event) {
-        if (event.target === signupModal) {
-          hideSignupModal();
-        }
-      });
-    }
-
-    // Show signup modal
-    function showSignupModal() {
-      signupModal.style.display = 'block';
-    }
-
-    // Hide signup modal
-    function hideSignupModal() {
-      signupModal.style.display = 'none';
-    }
-
-    // Setup timer to show signup popup every half minute
-    function setupSignupPopupTimer() {
-      setInterval(() => {
-        showSignupModal();
-      }, 60000);
     }
 
     // Apply dark mode from localStorage on page load
@@ -239,4 +186,3 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
   });
-
