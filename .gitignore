@@ -3,7 +3,6 @@
 /node_modules
 server.txt
 .env
-*file*.json
 
 #rapid API- research
 .vercel
