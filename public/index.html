@@ -3,61 +3,112 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TechNews Aggregator</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <title>News Aggregator - Stay Informed</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-  <header>
-    <div class="container">
-      <h1 class="logo">TechNews</h1>
-      <nav>
-        <ul class="nav-links" id="navLinks">
-          <!-- Dynamically populated -->
-        </ul>
-      </nav>
-      <div class="dark-mode-toggle" id="darkModeToggle" title="Toggle light/dark mode" style="cursor:pointer; font-size: 1.5rem; color: white; margin-left: 1rem;">
-        <i class="fas fa-star"></i>
+  <!-- Header -->
+  <header class="header">
+      <div class="container">
+          <div class="header-content">
+              <div class="logo">
+                  <i class="fas fa-newspaper"></i>
+                  <span>NewsHub</span>
+              </div>
+                
+              <nav class="nav" id="mainNav">
+                  <ul class="nav-links" id="navLinks">
+                      <!-- Categories will be loaded dynamically -->
+                  </ul>
+              </nav>
+
+              <div class="header-actions">
+                  <div class="search-container">
+                      <input type="text" id="topicSearch" placeholder="Search news..." class="search-input">
+                      <button class="search-btn" id="searchBtn">
+                          <i class="fas fa-search"></i>
+                      </button>
+                  </div>
+                    
+                  <button class="theme-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+                      <i class="fas fa-moon"></i>
+                  </button>
+                    
+                  <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                  </button>
+              </div>
+          </div>
       </div>
-      <div class="mobile-menu" id="mobileMenuBtn">
-        <i class="fas fa-bars"></i>
-      </div>
-    </div>
   </header>
 
-  <main class="container">
-    <div class="category-header">
-      <h2 id="categoryTitle">Latest Technology News</h2>
-      <div class="filter-options">
-        <label for="topicSearch">Search topics:</label>
-        <input type="text" id="topicSearch" placeholder="Search articles...">
+  <!-- Main Content -->
+  <main class="main">
+      <div class="container">
+          <!-- Category Title -->
+          <div class="category-header">
+              <h1 class="category-title" id="categoryTitle">General News</h1>
+              <div class="category-meta">
+                  <span class="article-count" id="articleCount">Loading...</span>
+                  <button class="refresh-btn" id="refreshBtn" title="Refresh news">
+                      <i class="fas fa-sync-alt"></i>
+                  </button>
+              </div>
+          </div>
+
+          <!-- Loading Indicator -->
+          <div class="loading-indicator" id="loadingIndicator">
+              <div class="spinner"></div>
+              <p>Loading latest news...</p>
+          </div>
+
+          <!-- News Grid -->
+          <div class="news-grid" id="newsContainer">
+              <!-- Articles will be loaded dynamically -->
+          </div>
+
+          <!-- Load More Button -->
+          <div class="load-more-container" id="loadMoreContainer" style="display: none;">
+              <button class="load-more-btn" id="loadMoreBtn">
+                  Load More Articles
+              </button>
+          </div>
       </div>
-    </div>
-
-    <div class="news-grid" id="newsContainer">
-      <!-- News articles will be loaded here -->
-    </div>
-
-    <div class="loading" id="loadingIndicator">
-      <div class="spinner"></div>
-      <p>Loading news...</p>
-    </div>
   </main>
 
-  <!-- Signup/Login Modal -->
-  <div id="signupModal" class="modal">
-    <div class="modal-content">
-      <span class="close-button" id="closeModal">&times;</span>
-      <p>Enjoying the articles so far? Sign up for real time updates.</p>
-      <button id="signupButton" class="modal-button" href="login.html">Sign Up</button>
-    </div>
-  </div>
-
-  <footer>
-    <div class="container">
-      <p>&copy; 2023 TechNews Aggregator. All rights reserved.</p>
-      <p>Powered by the power of news sources.</p>
-    </div>
+  <!-- Footer -->
+  <footer class="footer">
+      <div class="container">
+          <div class="footer-content">
+              <div class="footer-section">
+                  <h3>NewsHub</h3>
+                  <p>Your trusted source for aggregated news from multiple reliable sources.</p>
+              </div>
+              <div class="footer-section">
+                  <h4>Sources</h4>
+                  <ul>
+                      <li>NewsAPI</li>
+                      <li>GNews</li>
+                      <li>Multiple Publishers</li>
+                  </ul>
+              </div>
+              <div class="footer-section">
+                  <h4>Categories</h4>
+                  <ul id="footerCategories">
+                      <!-- Will be populated dynamically -->
+                  </ul>
+              </div>
+          </div>
+          <div class="footer-bottom">
+              <p>&copy; 2024 NewsHub. All rights reserved.</p>
+          </div>
+      </div>
   </footer>
 
   <script src="js/script.js"></script>
