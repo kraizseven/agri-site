@@ -2,8 +2,7 @@
 
 /node_modules
 server.txt
-#*.env
-*file*.json
+.env
 
 #rapid API- research
 .vercel
